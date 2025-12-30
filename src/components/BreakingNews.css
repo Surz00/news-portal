@@ -1,0 +1,41 @@
+.breaking-wrapper {
+  display: flex;
+  align-items: center;
+  background: #c4161c;
+  color: #fff;
+  height: 40px;
+  overflow: hidden;
+}
+
+.breaking-label {
+  background: #000;
+  padding: 0 15px;
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.breaking-marquee {
+  flex: 1;
+  overflow: hidden;
+}
+
+.breaking-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.breaking-item {
+  margin-right: 40px;
+  font-size: 14px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
