@@ -3,6 +3,12 @@ import { useParams } from 'react-router-dom'
 import { client, urlFor } from '../sanity'
 import { PortableText } from '@portabletext/react'
 
+const openAd = () => {
+  window.open(
+    https://otieu.com/4/10400707,
+    "_blank"
+  )
+}
 
 export default function Article() {
   const { slug } = useParams()
@@ -111,6 +117,24 @@ export default function Article() {
           }}
         />
       </div>
+      {/* MONETAG CTA BUTTON */}
+        <div style={{ textAlign: 'center', margin: '40px 0' }}>
+          <button
+            onClick={openAd}
+            style={{
+              padding: '12px 24px',
+              background: '#d32f2f',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '6px',
+              fontSize: '16px',
+              cursor: 'pointer'
+            }}
+          >
+            👉 पूरी खबर पढ़ें
+          </button>
+        </div>
+
     </div>
   )
 }
