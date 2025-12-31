@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { client, urlFor } from '../sanity'
+import { PortableText } from '@portabletext/react'
+
 
 export default function Article() {
   const { slug } = useParams()
@@ -60,7 +62,7 @@ export default function Article() {
       )}
 
       {/* CONTENT */}
-      <div style={{ lineHeight: '1.8', fontSize: '17px' }}>
+      {/* <div style={{ lineHeight: '1.8', fontSize: '17px' }}>
         {post.content?.map((block) => {
           if (block._type === 'block') {
             return (
@@ -71,6 +73,43 @@ export default function Article() {
           }
           return null
         })}
+      </div> */}
+
+      {/* CONTENT */}
+      {/* CONTENT */}
+      <div className="article-content" style={{ lineHeight: '1.8', fontSize: '17px' }}>
+        <PortableText
+          value={post.content}
+          components={{
+            block: {
+              h2: ({ children }) => (
+                <h2 style={{ marginTop: '25px', marginBottom: '10px' }}>
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 style={{ marginTop: '20px', marginBottom: '10px' }}>
+                  {children}
+                </h3>
+              ),
+              normal: ({ children }) => (
+                <p style={{ marginBottom: '15px' }}>{children}</p>
+              ),
+            },
+            list: {
+              bullet: ({ children }) => (
+                <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
+                  {children}
+                </ul>
+              ),
+            },
+            listItem: {
+              bullet: ({ children }) => (
+                <li style={{ marginBottom: '8px' }}>{children}</li>
+              ),
+            },
+          }}
+        />
       </div>
     </div>
   )
