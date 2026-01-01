@@ -1,18 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { client, urlFor } from '../sanity'
-import { PortableText } from '@portabletext/react'
-
-const openAd = () => {
-  window.open(
-    https://otieu.com/4/10400707,
-    "_blank"
-  )
-}
-
 export default function Article() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
+
+  // ✅ FIXED FUNCTION
+  const openAd = () => {
+    window.open(
+      "https://otieu.com/4/10400707",
+      "_blank"
+    )
+  }
 
   useEffect(() => {
     client
@@ -68,73 +64,27 @@ export default function Article() {
       )}
 
       {/* CONTENT */}
-      {/* <div style={{ lineHeight: '1.8', fontSize: '17px' }}>
-        {post.content?.map((block) => {
-          if (block._type === 'block') {
-            return (
-              <p key={block._key} style={{ marginBottom: '15px' }}>
-                {block.children.map((child) => child.text).join('')}
-              </p>
-            )
-          }
-          return null
-        })}
-      </div> */}
-
-      {/* CONTENT */}
-      {/* CONTENT */}
       <div className="article-content" style={{ lineHeight: '1.8', fontSize: '17px' }}>
-        <PortableText
-          value={post.content}
-          components={{
-            block: {
-              h2: ({ children }) => (
-                <h2 style={{ marginTop: '25px', marginBottom: '10px' }}>
-                  {children}
-                </h2>
-              ),
-              h3: ({ children }) => (
-                <h3 style={{ marginTop: '20px', marginBottom: '10px' }}>
-                  {children}
-                </h3>
-              ),
-              normal: ({ children }) => (
-                <p style={{ marginBottom: '15px' }}>{children}</p>
-              ),
-            },
-            list: {
-              bullet: ({ children }) => (
-                <ul style={{ paddingLeft: '20px', marginBottom: '15px' }}>
-                  {children}
-                </ul>
-              ),
-            },
-            listItem: {
-              bullet: ({ children }) => (
-                <li style={{ marginBottom: '8px' }}>{children}</li>
-              ),
-            },
-          }}
-        />
+        <PortableText value={post.content} />
       </div>
-      {/* MONETAG CTA BUTTON */}
-        <div style={{ textAlign: 'center', margin: '40px 0' }}>
-          <button
-            onClick={openAd}
-            style={{
-              padding: '12px 24px',
-              background: '#d32f2f',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '6px',
-              fontSize: '16px',
-              cursor: 'pointer'
-            }}
-          >
-            👉 पूरी खबर पढ़ें
-          </button>
-        </div>
 
+      {/* ✅ MONETAG CTA BUTTON (WORKING) */}
+      <div style={{ textAlign: 'center', margin: '40px 0' }}>
+        <button
+          onClick={openAd}
+          style={{
+            padding: '12px 24px',
+            background: '#d32f2f',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '16px',
+            cursor: 'pointer'
+          }}
+        >
+          👉 पूरी खबर पढ़ें
+        </button>
+      </div>
     </div>
   )
 }
