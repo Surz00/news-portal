@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { client, urlFor } from '../sanity'
+import { PortableText } from '@portabletext/react'
 export default function Article() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
