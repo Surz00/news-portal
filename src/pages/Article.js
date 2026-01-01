@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { client, urlFor } from '../sanity'
 import { PortableText } from '@portabletext/react'
+
 export default function Article() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
 
-  // ✅ FIXED FUNCTION
+  // ✅ MONETAG DIRECT LINK FUNCTION
   const openAd = () => {
     window.open(
       "https://otieu.com/4/10400707",
@@ -27,13 +28,16 @@ export default function Article() {
           },
           content
         }
-      `,
+        `,
         { slug }
       )
-      .then(setPost)
+      .then((data) => setPost(data))
+      .catch(console.error)
   }, [slug])
 
-  if (!post) return <p className="container">Loading...</p>
+  if (!post) {
+    return <p className="container">Loading...</p>
+  }
 
   return (
     <div className="container">
@@ -45,9 +49,7 @@ export default function Article() {
           </span>
         )}
         {post.publishedAt && (
-          <span>
-            {new Date(post.publishedAt).toDateString()}
-          </span>
+          <span>{new Date(post.publishedAt).toDateString()}</span>
         )}
       </div>
 
@@ -68,11 +70,11 @@ export default function Article() {
       )}
 
       {/* CONTENT */}
-      <div className="article-content" style={{ lineHeight: '1.8', fontSize: '17px' }}>
+      <div style={{ lineHeight: '1.8', fontSize: '17px' }}>
         <PortableText value={post.content} />
       </div>
 
-      {/* ✅ MONETAG CTA BUTTON (WORKING) */}
+      {/* ✅ MONETAG CTA BUTTON */}
       <div style={{ textAlign: 'center', margin: '40px 0' }}>
         <button
           onClick={openAd}
@@ -83,7 +85,7 @@ export default function Article() {
             border: 'none',
             borderRadius: '6px',
             fontSize: '16px',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         >
           👉 पूरी खबर पढ़ें
