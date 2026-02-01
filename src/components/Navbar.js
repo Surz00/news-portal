@@ -8,12 +8,16 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    client.fetch(`
-      *[_type == "category"] | order(title asc){
-        title,
-        slug
-      }
-    `).then(setCategories)
+    client
+      .fetch(`
+        *[_type == "category"]{
+          _id,
+          title,
+          "slug": slug.current
+        }
+      `)
+      .then(setCategories)
+      .catch(console.error)
   }, [])
 
   return (
@@ -31,8 +35,8 @@ export default function Navbar() {
         <nav className={`navbar-links ${open ? 'open' : ''}`}>
           {categories.map(cat => (
             <NavLink
-              key={cat.slug.current}
-              to={`/category/${cat.slug.current}`}
+              key={cat._id}
+              to={`/category/${cat.slug}`}
               onClick={() => setOpen(false)}
             >
               {cat.title}
