@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap');
 
 /* ================= RESET ================= */
- body { background: red !important; }  
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +15,7 @@ html, body, #root {
 
 body {
   font-family: 'Hind', sans-serif;
-  background: #f5f5f5;
+  background: #f4f6f8;
   color: #222;
 }
 
@@ -43,24 +42,41 @@ a {
   padding: 20px;
 }
 
-/* ================= GRID ================= */
+/* ================= NEWS GRID ================= */
+/* Desktop default */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-/* ================= CARD ================= */
+/* Tablet */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile — FORCE SINGLE COLUMN */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================= NEWS CARD ================= */
 .news-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
 }
 
 .news-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
 }
 
 /* ================= IMAGE ================= */
@@ -71,7 +87,13 @@ a {
   display: block;
 }
 
-/* ================= CATEGORY ================= */
+@media (max-width: 768px) {
+  .news-card img {
+    height: 200px;
+  }
+}
+
+/* ================= CATEGORY BADGE ================= */
 .news-category {
   display: inline-block;
   background: #ffcc00;
@@ -80,51 +102,36 @@ a {
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 4px;
-  margin: 10px;
+  margin: 12px;
 }
 
 /* ================= TITLE ================= */
 .news-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  padding: 12px;
   line-height: 1.4;
+  padding: 12px 14px 16px;
   color: #111;
 }
 
-/* ================= TABLET ================= */
-@media (max-width: 1024px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ================= MOBILE (🔥 SINGLE COLUMN) ================= */
 @media (max-width: 768px) {
-  .container {
-    padding: 14px;
-  }
-
-  .news-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .news-card img {
-    height: 200px;
-  }
-
   .news-title {
     font-size: 18px;
   }
 }
 
-/* ================= VERY SMALL PHONES ================= */
-@media (max-width: 480px) {
-  .news-grid {
-    grid-template-columns: 1fr !important;
-  }
+/* ================= ARTICLE PAGE ================= */
+.article-content p {
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.9;
+  color: #333;
+}
 
-  .news-card img {
-    height: 180px;
-  }
+/* ================= FOOTER SAFE ================= */
+footer {
+  background: #0b1c2d;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
