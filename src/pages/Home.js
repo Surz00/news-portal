@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { client, urlFor } from "../sanity";
 import { Link } from "react-router-dom";
+import Ad from "../components/Ad";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -9,19 +10,14 @@ export default function Home() {
   useEffect(() => {
     client.fetch(`
       *[_type=="post"] | order(publishedAt desc){
-        _id,
-        title,
-        slug,
-        image,
-        category->{title, "slug": slug.current}
+        _id,title,slug,image,
+        category->{title,"slug":slug.current}
       }
     `).then(setPosts);
 
     client.fetch(`
       *[_type=="category"]{
-        _id,
-        title,
-        "slug": slug.current
+        _id,title,"slug":slug.current
       }
     `).then(setCategories);
   }, []);
@@ -32,7 +28,7 @@ export default function Home() {
   return (
     <div className="container">
 
-      {/* ===== LATEST NEWS ===== */}
+      {/* 🔥 LATEST NEWS */}
       <h2 className="section-title">ताज़ा खबरें</h2>
       <div className="news-grid">
         {latestNews.map(post => (
@@ -45,9 +41,10 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="ad">Advertisement</div>
+      {/* 🔴 AD AFTER LATEST */}
+      <Ad label="Top Banner Advertisement" />
 
-      {/* ===== CATEGORY SECTIONS ===== */}
+      {/* 📂 CATEGORY SECTIONS */}
       {categories.map(cat => {
         const catPosts = posts.filter(
           p => p.category?.slug === cat.slug && !latestIds.has(p._id)
@@ -70,7 +67,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="ad">Advertisement</div>
+            {/* 🟡 AD BETWEEN CATEGORIES */}
+            <Ad label={`${cat.title} Section Ad`} />
           </section>
         );
       })}
