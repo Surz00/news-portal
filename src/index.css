@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&display=swap');
 
-/* ================= RESET ================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -9,23 +9,22 @@
 
 html, body, #root {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
 body {
   font-family: 'Hind', sans-serif;
-  background: #f4f6f8;
-  color: #111;
+  background: #f5f5f5;
+  color: #222;
 }
 
-/* ================= LINKS ================= */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* ================= APP LAYOUT ================= */
+/* APP */
 .app-wrapper {
   min-height: 100vh;
   display: flex;
@@ -36,43 +35,49 @@ a {
   flex: 1;
 }
 
-/* ================= CONTAINER ================= */
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 16px;
 }
 
-/* ================= SECTION TITLE ================= */
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 18px 0 12px;
-  border-left: 4px solid #c4161c;
-  padding-left: 10px;
-}
+/* ================= DESKTOP GRID ================= */
 
-/* ================= GRID (DESKTOP DEFAULT) ================= */
-.news-grid {
+.news-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 24px;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .news-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 🔥 MOBILE — FORCE SINGLE COLUMN */
+@media (max-width: 768px) {
+  .news-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px;
+  }
 }
 
 /* ================= CARD ================= */
+
 .news-card {
+  display: block; /* VERY IMPORTANT */
+  width: 100%;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.news-card:hover {
-  transform: translateY(-4px);
-}
-
-/* ================= IMAGE ================= */
+/* IMAGE */
 .news-card img {
   width: 100%;
   height: 200px;
@@ -80,55 +85,35 @@ a {
   display: block;
 }
 
-/* ================= TITLE ================= */
-.news-card h3 {
-  font-size: 16px;
+/* CATEGORY TAG */
+.news-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffcc00;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* TITLE */
+.news-title {
+  font-size: 17px;
   font-weight: 600;
+  padding: 12px;
   line-height: 1.4;
-  padding: 10px;
+  color: #111;
 }
 
-/* ================= AD ================= */
-.ad-box {
-  width: 100%;
-  background: #e0e0e0;
-  color: #333;
-  text-align: center;
-  padding: 18px;
-  margin: 22px 0;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* ================= TABLET ================= */
-@media (max-width: 1024px) {
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ================= MOBILE (🔥 ONE CARD PER ROW 🔥) ================= */
+/* MOBILE TITLE */
 @media (max-width: 768px) {
-  .news-grid {
-    grid-template-columns: 1fr;   /* ✅ THIS IS THE KEY */
+  .news-title {
+    font-size: 18px;
   }
 
   .news-card img {
-    height: 180px;
-  }
-
-  .section-title {
-    font-size: 20px;
-  }
-}
-
-/* ================= SMALL PHONES ================= */
-@media (max-width: 480px) {
-  .news-card img {
-    height: 160px;
-  }
-
-  .news-card h3 {
-    font-size: 15px;
+    height: 190px;
   }
 }

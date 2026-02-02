@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* 🔥 LATEST NEWS */}
       <h2 className="section-title">ताज़ा खबरें</h2>
-      <div className="news-grid">
+      <div className="news-list">
         {latestNews.map(post => (
           <Link key={post._id} to={`/news/${post.slug.current}`} className="news-card">
             {post.image && (
