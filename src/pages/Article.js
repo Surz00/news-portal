@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { client, urlFor } from "../sanity";
 import { PortableText } from "@portabletext/react";
 
@@ -8,32 +8,75 @@ export default function Article() {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    client.fetch(`
-      *[_type=="post" && slug.current==$slug][0]{
-        title,image,content,publishedAt,category->{title}
-      }
-    `, { slug }).then(setPost);
+    if (!slug) return;
+
+    client
+      .fetch(
+        `
+        *[_type=="post" && slug.current==$slug][0]{
+          title,
+          publishedAt,
+          image,
+          content,
+          category->{title, "slug": slug.current}
+        }
+        `,
+        { slug }
+      )
+      .then(setPost)
+      .catch(console.error);
   }, [slug]);
 
   if (!post) return <p className="container">Loading...</p>;
 
   return (
-    <div className="container article">
-      <p className="meta">
-        {post.category?.title} | {new Date(post.publishedAt).toDateString()}
-      </p>
+    <article className="article-page container">
+      
+      {/* ===== BREADCRUMB ===== */}
+      <div className="breadcrumb">
+        <Link to="/">Home</Link>
+        <span>›</span>
+        <Link to={`/category/${post.category?.slug}`}>
+          {post.category?.title}
+        </Link>
+      </div>
 
-      <h1>{post.title}</h1>
+      {/* ===== TITLE ===== */}
+      <h1 className="article-title">{post.title}</h1>
 
+      {/* ===== META ===== */}
+      <div className="article-meta">
+        <span className="article-category">
+          {post.category?.title}
+        </span>
+        <span>•</span>
+        <span>
+          {new Date(post.publishedAt).toDateString()}
+        </span>
+        <span>•</span>
+        <span>3 min read</span>
+      </div>
+
+      {/* ===== FEATURED IMAGE ===== */}
       {post.image && (
-        <img src={urlFor(post.image).width(1200).url()} alt={post.title} />
+        <img
+          src={urlFor(post.image).width(1200).url()}
+          alt={post.title}
+          className="article-image"
+        />
       )}
 
-      {post.content ? (
+      {/* ===== INLINE AD (TOP) ===== */}
+      <div className="article-ad">Advertisement</div>
+
+      {/* ===== CONTENT ===== */}
+      <div className="article-content">
         <PortableText value={post.content} />
-      ) : (
-        <p>Content not available</p>
-      )}
-    </div>
+      </div>
+
+      {/* ===== INLINE AD (BOTTOM) ===== */}
+      <div className="article-ad">Advertisement</div>
+
+    </article>
   );
 }

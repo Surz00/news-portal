@@ -45,6 +45,7 @@ import Home from './pages/Home'
 import Category from './pages/Category'
 import Article from './pages/Article'
 import ErrorBoundary from './components/ErrorBoundary'
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
             <Route path="/news/:slug" element={<Article />} />
           </Routes>
         </main>
+        <ScrollToTopButton />
 
         <Footer />
       </div>
@@ -75,3 +77,4 @@ function App() {
 
 export default App
 
+ 
