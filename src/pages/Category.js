@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { client, urlFor } from "../sanity";
 // import { Link } from "react-router-dom";
+import "../styles/category.css";
 
 
 export default function Category() {
@@ -44,10 +45,17 @@ export default function Category() {
       </div>
 
       {/* ===== STICKY CATEGORY AD ===== */}
-      <div className="category-ad-wrapper">
+      {/* <div className="category-ad-wrapper">
         <div className="category-ad">
           Advertisement
         </div>
+      </div> */}
+      <div
+        className="category-ad-box"
+        onClick={() => window.open('https://otieu.com/4/10572072', "_blank")}
+      >
+        <span>Sponsored</span>
+        <p>आज की खास खबर देखें</p>
       </div>
 
       {/* CATEGORY TITLE */}

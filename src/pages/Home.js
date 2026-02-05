@@ -66,7 +66,7 @@ export default function Home() {
       <section className="latest-section">
         <h2 className="section-title">ताज़ा खबरें</h2>
 
-        <div className="news-grid">
+        {/* <div className="news-grid">
           {latestNews.map(post => (
             <Link
               key={post._id}
@@ -82,13 +82,48 @@ export default function Home() {
               <h3 className="news-title">{post.title}</h3>
             </Link>
           ))}
+        </div> */}
+        <div className="news-grid">
+          {latestNews.map(post => (
+            <Link
+              key={post._id}
+              to={`/news/${post.slug.current}`}
+              className="news-card"
+            >
+              {/* IMAGE + OVERLAY */}
+              <div className="news-thumb">
+                {post.image && (
+                  <img
+                    src={urlFor(post.image).width(600).url()}
+                    alt={post.title}
+                  />
+                )}
+
+                <div className="news-overlay">
+                  <span className="news-category">
+                    {post.category?.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* TITLE */}
+              <h3 className="news-title">{post.title}</h3>
+            </Link>
+          ))}
         </div>
+
       </section>
 
       {/* AD */}
-      <div className="home-ad">Advertisement</div>
-
-      {/* ===== CATEGORY SECTIONS ===== */}
+      <div className="home-ad">Advertisement</div> 
+        <div
+          className="home-ad"
+          onClick={() => window.open('https://otieu.com/4/10572072', "_blank")}
+        >
+          🔴 Sponsored News – Click to Read
+        </div> 
+        
+      {/* ===== CATEGORY SECTIONS =====*/}
       {categories.map(cat => {
         const catPosts = posts.filter(
           post => post.category?.slug === cat.slug

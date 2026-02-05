@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700;800&display=swap');
+
+/* ================= ARTICLE WRAPPER ================= */
+
+.article-container {
+  max-width: 850px;
+  margin: auto;
+  padding: 16px;
+  background: #ffffff;
+  font-family: 'Hind', sans-serif;
+}
+
+/* ================= META ================= */
+
+.article-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.article-category {
+  color: #c4161c;
+  font-weight: 700;
+}
+
+/* ================= TITLE ================= */
+
+.article-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+/* ================= IMAGE ================= */
+
+.article-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 18px 0;
+}
+
+/* ================= CONTENT ================= */
+
+.article-content {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #222;
+}
+
+.article-content p {
+  margin-bottom: 18px;
+}
+
+.article-content h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 26px 0 12px;
+}
+
+.article-content ul {
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+
+.article-content li {
+  margin-bottom: 8px;
+}
+
+/* ================= ARTICLE AD ================= */
+
+.article-ad {
+  margin: 32px 0;
+  height: 90px;
+  background: #f2f2f2;
+  border: 1px dashed #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ================= SHARE (DESKTOP) ================= */
+
+.share-desktop {
+  position: fixed;
+  top: 160px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+.share-desktop a {
+  background: #f2f2f2;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ================= SHARE (MOBILE) ================= */
+
+.share-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  justify-content: space-around;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.share-mobile a {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .article-title {
+    font-size: 24px;
+  }
+
+  .article-content {
+    font-size: 16px;
+  }
+
+  .article-ad {
+    height: 60px;
+  }
+
+  .share-desktop {
+    display: none;
+  }
+
+  .share-mobile {
+    display: flex;
+  }
+}
+.article-ad-btn {
+  display: block;
+  width: 100%;
+  margin: 30px 0;
+  padding: 14px;
+  background: #c4161c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
