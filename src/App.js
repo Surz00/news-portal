@@ -93,7 +93,7 @@ import Home from "./pages/Home";
 import Category from "./pages/Category";
 import Article from "./pages/Article";
 import ErrorBoundary from "./components/ErrorBoundary";
-
+import ScrollToTopButton from "./components/ScrollToTopButton"
 const AD_LINK = "https://otieu.com/4/10572072";
 
 function App() {
@@ -111,7 +111,7 @@ function App() {
                 <Route path="/news/:slug" element={<Article />} />
               </Routes>
             </main>
-
+            <ScrollToTopButton/>
             <Footer />
           </div>
         </ErrorBoundary>

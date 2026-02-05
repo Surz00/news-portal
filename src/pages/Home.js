@@ -115,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* AD */}
-      <div className="home-ad">Advertisement</div> 
+      {/* <div className="home-ad">Advertisement</div>  */}
         <div
           className="home-ad"
           onClick={() => window.open('https://otieu.com/4/10572072', "_blank")}
@@ -137,7 +137,7 @@ export default function Home() {
         return (
           <div key={cat._id}>
             <CategoryBlock title={cat.title} posts={filtered} />
-            <div className="home-ad">Advertisement</div>
+            {/* <div className="home-ad">Advertisement</div> */}
           </div>
         );
       })}

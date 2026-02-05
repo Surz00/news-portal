@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="navbar-container">
 
         <NavLink to="/" className="navbar-logo">
-          NEWS<span>PORTAL</span>
+          Taza<span>TRUTH</span>
         </NavLink>
 
         <div className="hamburger" onClick={() => setOpen(!open)}>

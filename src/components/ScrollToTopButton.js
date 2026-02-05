@@ -31,7 +31,7 @@
 //   );
 // }
 import { useEffect, useState } from "react";
-import "../styles/ScrollToTopButton.css";
+import "../styles/scrollToTopButton.css";
 export default function ScrollToTopButton() {
   const [show, setShow] = useState(false);
 
