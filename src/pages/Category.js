@@ -25,9 +25,41 @@ export default function Category() {
     ).then(setPosts);
   }, [slug]);
 
+  // if (posts.length === 0) {
+  //   return <p className="container">No news found</p>;
+  // }
+
   if (posts.length === 0) {
-    return <p className="container">No news found</p>;
+    return (
+      <div className="category-container">
+
+        {/* BREADCRUMB */}
+        <div className="breadcrumb">
+          <Link to="/">Home</Link>
+          <span>›</span>
+          <span className="breadcrumb-current">
+            {slug.replace("-", " ")}
+          </span>
+        </div>
+
+        {/* AD — ALWAYS SHOW */}
+        <div
+          className="category-ad-box"
+          onClick={() =>
+            window.open("https://otieu.com/4/10572072", "_blank")
+          }
+        >
+          <span>Sponsored</span>
+          <p>आज की खास खबर देखें</p>
+        </div>
+
+        <p style={{ padding: "20px", color: "#555" }}>
+          No news found
+        </p>
+      </div>
+    );
   }
+
 
   const main = posts[0];
   const others = posts.slice(1);

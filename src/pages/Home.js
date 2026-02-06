@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { client, urlFor } from "../sanity";
 import { Link } from "react-router-dom";
 import "../styles/home.css";
-
+ 
 
 /* ================= CATEGORY BLOCK ================= */
 function CategoryBlock({ title, posts }) {
