@@ -37,7 +37,7 @@ export default function Footer() {
 
       {/* COPYRIGHT */}
       <div className="footer-bottom">
-        © {new Date().getFullYear()} News Portal. All rights reserved.
+        © {new Date().getFullYear()} TazaTruth. All rights reserved.
       </div>
     </footer>
   )
